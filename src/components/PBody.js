@@ -8,11 +8,31 @@ export default class PBody extends React.Component{
     constructor(){
         super()
         this.state = {
-            number: '36',
+            number: '',
             guess: '',
             history: [],
-            currentFeedback: 'Make your Guess!'
+            currentFeedback: 'Make your Guess!'   
         }
+    }
+
+    componentDidMount(){
+       const number = this.generateNumber();
+       this.setState({number: number});
+    }
+
+
+    resetState(){
+        const number = this.generateNumber();
+        this.setState({
+            number: number,
+            guess: '',
+            history: [],
+            currentFeedback: 'Make your Guess!'   
+        })        
+    }
+
+    generateNumber(){
+        return Math.floor((Math.random() * 100) + 1).toString();
     }
 
     setGuess(value) {
@@ -69,7 +89,7 @@ export default class PBody extends React.Component{
 
     render(){
         return (
-        [<Header />,
+        [<Header resetState={()=>this.resetState()} />,
         <Game 
           feedback={this.state.currentFeedback}
            history={this.state.history} 
