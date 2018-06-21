@@ -10,7 +10,7 @@ export default function Game(props){
 
     return (
     
-    <section class="game"> 
+    <section className="game"> 
         <Feedback feedback={props.feedback} />
         <Input guess={props.guess} guessInput={props.guessInput} clicked={props.clicked} />
         <GuessNum number={props.history.length +1}/>

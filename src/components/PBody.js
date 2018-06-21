@@ -9,7 +9,7 @@ export default class PBody extends React.Component{
         super()
         this.state = {
             guess: '',
-            history: [1, 2, 3],
+            history: [],
             currentFeedback: 'Make your Guess!',
             feedbackOptions: false
         }
@@ -27,7 +27,26 @@ export default class PBody extends React.Component{
         )
     }
 
-
+    checkGuess(){
+        const guess = this.state.guess
+        // console.log(guess)
+        if(guess === ''){
+            alert('please input a number');
+        }
+        else if(guess % 1 !== 0){
+            alert('please input an integer')
+        }
+        else if(guess >100 || guess < 1){
+            alert('please choose a number between zero and 100');
+        }
+        else if(this.state.history.includes(guess)){
+            alert('You guessed this number already');
+        }
+        else{
+            this.updateHistory(guess)
+        }
+        this.setGuess('')
+    }
 
     render(){
         return (
@@ -39,7 +58,7 @@ export default class PBody extends React.Component{
            guessInput={value => this.setGuess(value)}
            clicked={(e) => {
                e.preventDefault();
-               (console.log('test submit'))}}
+               this.checkGuess()}}
            />]
         )
 

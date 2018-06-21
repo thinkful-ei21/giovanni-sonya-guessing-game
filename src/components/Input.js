@@ -8,7 +8,7 @@ export default function Input(props){
     <form onSubmit={(e) => props.clicked(e)}>
 
 	    <input type="text" name="userGuess" id="userGuess" 
-        className="text" maxlength="3" autocomplete="off" 
+        className="text" maxLength="3" autoComplete="off" 
         placeholder="Enter your Guess" required="" value={props.guess}
         onChange={e => props.guessInput(e.currentTarget.value)}
         >
