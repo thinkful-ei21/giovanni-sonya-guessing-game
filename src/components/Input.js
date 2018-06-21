@@ -2,13 +2,19 @@
 
 import React from 'react';
 
-export default function Input(){
+export default function Input(props){
 
     return (
-    <form>
-	    <input type="text" name="userGuess" id="userGuess" className="text" maxlength="3" autocomplete="off" placeholder="Enter your Guess" required="">
+    <form onSubmit={(e) => props.clicked(e)}>
+
+	    <input type="text" name="userGuess" id="userGuess" 
+        className="text" maxlength="3" autocomplete="off" 
+        placeholder="Enter your Guess" required="" value={props.guess}
+        onChange={e => props.guessInput(e.currentTarget.value)}
+        >
         </input>
-        <input type="submit" id="guessButton" className="button" name="submit" value="Guess">
+        <input type="submit" id="guessButton" className="button" name="submit" 
+        value="Guess" >
         </input>
     </form>
     )

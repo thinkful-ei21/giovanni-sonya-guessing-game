@@ -9,16 +9,38 @@ export default class PBody extends React.Component{
         super()
         this.state = {
             guess: '',
-            history: [],
+            history: [1, 2, 3],
             currentFeedback: 'Make your Guess!',
             feedbackOptions: false
         }
     }
 
+    setGuess(value) {
+        this.setState(
+            {guess: value}
+        )
+    }
+
+    updateHistory(value) {
+        this.setState(
+            {history: [...this.state.history, value]}
+        )
+    }
+
+
+
     render(){
         return (
         [<Header />,
-        <Game feedBack={this.state.currentFeedback} history={this.state.history} />]
+        <Game 
+          feedback={this.state.currentFeedback}
+           history={this.state.history} 
+           guess={this.state.guess} 
+           guessInput={value => this.setGuess(value)}
+           clicked={(e) => {
+               e.preventDefault();
+               (console.log('test submit'))}}
+           />]
         )
 
     }

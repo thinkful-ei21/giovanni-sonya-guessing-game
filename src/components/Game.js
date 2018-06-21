@@ -12,7 +12,7 @@ export default function Game(props){
     
     <section class="game"> 
         <Feedback feedback={props.feedback} />
-        <Input />
+        <Input guess={props.guess} guessInput={props.guessInput} clicked={props.clicked} />
         <GuessNum number={props.history.length +1}/>
         <Guesses numbers={props.history} />
 	</section>
