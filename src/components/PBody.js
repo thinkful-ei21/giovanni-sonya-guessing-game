@@ -18,7 +18,7 @@ export default class PBody extends React.Component{
     render(){
         return (
         [<Header />,
-        <Game feedBack={this.state.currentFeedback} />]
+        <Game feedBack={this.state.currentFeedback} history={this.state.history} />]
         )
 
     }

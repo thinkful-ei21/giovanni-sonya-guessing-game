@@ -13,8 +13,8 @@ export default function Game(props){
     <section class="game"> 
         <Feedback feedback={props.feedback} />
         <Input />
-        <GuessNum number='23'/>
-        <Guesses numbers={[1,3,5,7,9]} />
+        <GuessNum number={props.history.length +1}/>
+        <Guesses numbers={props.history} />
 	</section>
     )
 };
