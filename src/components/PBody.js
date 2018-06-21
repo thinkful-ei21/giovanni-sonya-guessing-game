@@ -8,10 +8,10 @@ export default class PBody extends React.Component{
     constructor(){
         super()
         this.state = {
+            number: '36',
             guess: '',
             history: [],
-            currentFeedback: 'Make your Guess!',
-            feedbackOptions: false
+            currentFeedback: 'Make your Guess!'
         }
     }
 
@@ -44,8 +44,27 @@ export default class PBody extends React.Component{
         }
         else{
             this.updateHistory(guess)
+            this.updateFeedback();
         }
         this.setGuess('')
+    }
+
+    updateFeedback() {
+        const guess = this.state.guess;
+        const diff = Math.abs(guess - this.state.number)
+        if (guess === this.state.number) {
+            this.setState( 
+                {currentFeedback: 'You guessed it!!'}
+            )
+        } else if (diff <= 10) {
+            this.setState( 
+                {currentFeedback: 'Hot!'}
+            )
+        } else {
+            this.setState( 
+                {currentFeedback: 'Cold :('}
+            )
+        }
     }
 
     render(){
