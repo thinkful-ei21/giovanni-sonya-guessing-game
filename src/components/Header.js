@@ -5,7 +5,7 @@ export default function Header(props){
     return ([    		
     	<nav> 
         <ul className="clearfix">
-            <li><a className="what" href="#">What ?</a></li>
+            <li><a onClick={()=>props.toggleOverlay()} className="what" href="#">What ?</a></li>
             <li><a onClick={()=>props.resetState()} className="new" href="#">+ New Game</a></li>
         </ul>
         </nav>,

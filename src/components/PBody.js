@@ -3,6 +3,7 @@
 import React from 'react';
 import Game from './Game'
 import Header from './Header'
+import Overlay from './Overlay';
 
 export default class PBody extends React.Component{
     constructor(){
@@ -11,7 +12,8 @@ export default class PBody extends React.Component{
             number: '',
             guess: '',
             history: [],
-            currentFeedback: 'Make your Guess!'   
+            currentFeedback: 'Make your Guess!',
+            overlay: false
         }
     }
 
@@ -87,10 +89,22 @@ export default class PBody extends React.Component{
         }
     }
 
+    toggleOverlay() {
+        this.setState(
+            {overlay: !this.state.overlay}
+        )
+    }
+
+    
+
     render(){
+        if(this.state.overlay) {
+            
+            return (<Overlay toggleOverlay={() => this.toggleOverlay()} />)
+        }
         return (
-        [<Header resetState={()=>this.resetState()} />,
-        <Game 
+        [<Header resetState={()=>this.resetState()} toggleOverlay={() => this.toggleOverlay()}  />,
+         <Game 
           feedback={this.state.currentFeedback}
            history={this.state.history} 
            guess={this.state.guess} 
